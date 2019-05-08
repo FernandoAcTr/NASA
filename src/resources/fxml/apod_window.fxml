@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox fx:id="paneRoot" alignment="TOP_CENTER" style="-fx-background-color: #404040;" styleClass="rootpane2">
+         <children>
+            <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/dummyapod.jpg" />
+               </image>
+            </ImageView>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" maxWidth="294.0" minWidth="10.0" percentWidth="20.0" prefWidth="96.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" percentWidth="80.0" prefWidth="504.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Title:">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Image Credit:" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Explanation:" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Date:" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="URL:" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Media Type:" GridPane.rowIndex="5">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Service Version:" GridPane.rowIndex="6">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="lblTitle" styleClass="lbl" GridPane.columnIndex="1" />
+                  <Label fx:id="lblDate" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblCredit" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="lblExplanation" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lblUrl" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lblMedia" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="lblVersion" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </content>
+   <stylesheets>
+      <URL value="@../css/maincss.css" />
+      <URL value="@../css/scrollbar.css" />
+   </stylesheets>
+</ScrollPane>

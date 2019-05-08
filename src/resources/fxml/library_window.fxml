@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<ScrollPane focusTraversable="false" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="696.0" styleClass="pane-default">
+         <children>
+            <AnchorPane prefHeight="301.0" prefWidth="696.0" style="-fx-background-color: #404040;" styleClass="rootpane3">
+               <children>
+                  <Label layoutX="409.0" layoutY="35.0" text="NASA Image and" AnchorPane.rightAnchor="177.0" AnchorPane.topAnchor="35.0">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                        <String fx:value="lbl-h1" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="483.0" layoutY="57.0" text="Video Libary" AnchorPane.rightAnchor="176.0" AnchorPane.topAnchor="58.0">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                        <String fx:value="lbl-h1" />
+                     </styleClass>
+                  </Label>
+                  <ImageView fitHeight="130.0" fitWidth="165.0" layoutX="523.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
+                     <image>
+                        <Image url="@../images/nasa.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="BOTTOM_CENTER" layoutX="148.0" layoutY="151.0" prefHeight="100.0" prefWidth="200.0" spacing="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+                     <children>
+                        <TextField fx:id="txtSearch" promptText="Search for...(ej &quot;Orion&quot;)" styleClass="textfield_search" HBox.hgrow="SOMETIMES" />
+                        <JFXButton fx:id="btnSearch" contentDisplay="GRAPHIC_ONLY" styleClass="button_search">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="30" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" right="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="70.0" layoutY="201.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="230.0">
+                     <children>
+                        <JFXCheckBox fx:id="checkImages" text="Images" />
+                        <JFXCheckBox fx:id="checkVideos" text="Videos" />
+                        <JFXCheckBox fx:id="checkAudio" text="Audio" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="divider" />
+            <HBox prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="lblNewer" styleClass="item-search" text="Newest Uploads">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="lblPopular" styleClass="item-search" text="Most Popular">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="100.0" />
+               </padding>
+            </HBox>
+            <TilePane prefHeight="200.0" prefWidth="200.0" styleClass="pane-trasparent" />
+         </children>
+      </VBox>
+   </content>
+   <stylesheets>
+      <URL value="@../css/maincss.css" />
+      <URL value="@../css/scrollbar.css" />
+   </stylesheets>
+</ScrollPane>

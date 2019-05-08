@@ -1,0 +1,103 @@
+/*-----------------------------escena1----------------*/
+.rootpane1{
+    -fx-background-image: url("/resources/images/wallper.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: inherit;
+    -fx-background-position: center;
+}
+
+.rootpane2{
+    -fx-background-image: url("/resources/images/wallper_root.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: inherit;
+    -fx-background-position: center;
+}
+
+.rootpane3{
+    -fx-background-image: url("/resources/images/wallper2.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: inherit;
+    -fx-background-position: center;
+}
+
+/*-------------------------------------escena 2-------------------------------*/
+
+.textfield_search{
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #3F477E;
+    -fx-pref-height: 40;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: derive(white, -20%);
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-background-color: #404040;
+    -fx-border-radius: 3px;
+}
+
+.textfield_search:focused{
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.5), 2, 0.8, 0, 0);
+}
+
+.button_search{
+    -fx-background-color: #3F477E;
+    -fx-border-radius: 0px;
+}
+
+.jfx-check-box{
+    -jfx-checked-color: #3b657e;
+    -jfx-unchecked-color: derive(white, -20%);
+    -fx-text-fill: white;
+    -fx-background-color: #3F477E;
+    -fx-pref-height: 40;
+    -fx-pref-width: 100;
+    -fx-alignment: center;
+}
+
+.item-search{
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-pref-height: 50;
+    -fx-pref-width: 150;
+    -fx-underline: true;
+}
+
+.item-search:hover{
+    -fx-underline: false;
+}
+
+/*-----------------------------genericos-----------------------------------*/
+
+.toolbar{
+    -fx-background-color: #404040;
+}
+
+.jfx-hamburger-icon StackPane{
+    -fx-background-color : white;
+    -fx-background-radius : 5px;
+}
+
+.lbl{
+    -fx-text-fill: white;
+}
+
+.lbl-info{
+    -fx-font-weight: bold;
+}
+
+.lbl-h1{
+    -fx-font-size: 20;
+}
+
+.pane-trasparent{
+    -fx-background-color: transparent;
+}
+
+.pane-default{
+    -fx-background-color: #404040;
+}
+
+.divider{
+    -fx-pref-height: 5;
+    -fx-background-color: #000000;
+    -fx-border-color: #000000;
+}

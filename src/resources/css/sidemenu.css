@@ -1,0 +1,20 @@
+.side_item{
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-content-display: left;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #505050;
+}
+
+.side_item:hover{
+    -fx-background-color: #303030;
+}
+
+.glyph-icon{
+    -fx-fill: white;
+}
+
+.rootpane{
+    -fx-background-color: #404040;
+    -fx-border-width: 0 0 0 0;
+}
