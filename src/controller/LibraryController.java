@@ -42,7 +42,6 @@ public class LibraryController implements Initializable {
     public LibraryController() {
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initComponents();
