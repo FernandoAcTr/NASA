@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox fx:id="paneRoot" alignment="TOP_CENTER" style="-fx-background-color: #404040;" styleClass="rootpane2">
          <children>
-            <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/dummyapod.jpg" />
-               </image>
-            </ImageView>
-            <GridPane>
+            <StackPane>
+               <children>
+                  <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/dummyapod.jpg" />
+                     </image>
+                  </ImageView>
+                  <JFXSpinner fx:id="spnWait" />
+               </children>
+            </StackPane>
+            <GridPane fx:id="paneData">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" maxWidth="294.0" minWidth="10.0" percentWidth="20.0" prefWidth="96.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" percentWidth="80.0" prefWidth="504.0" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="504.0" minWidth="10.0" percentWidth="80.0" prefWidth="504.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="100.0" prefHeight="100.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Title:">
@@ -100,13 +108,37 @@
                         <String fx:value="lbl-info" />
                      </styleClass>
                   </Label>
-                  <Label fx:id="lblTitle" styleClass="lbl" GridPane.columnIndex="1" />
-                  <Label fx:id="lblDate" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lblCredit" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="lblExplanation" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="lblUrl" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="lblMedia" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label fx:id="lblVersion" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtTitle" editable="false" GridPane.columnIndex="1">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="pane-trasparent" />
+                     </styleClass></TextField>
+                  <TextField fx:id="txtDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="pane-trasparent" />
+                     </styleClass></TextField>
+                  <TextField fx:id="txtCredit" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="pane-trasparent" />
+                     </styleClass></TextField>
+                  <TextField fx:id="txtMedia" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="pane-trasparent" />
+                     </styleClass></TextField>
+                  <TextField fx:id="txtVersion" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="pane-trasparent" />
+                     </styleClass></TextField>
+                  <TextField fx:id="txtUrl" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <styleClass>
+                        <String fx:value="pane-trasparent" />
+                        <String fx:value="lbl" />
+                     </styleClass></TextField>
+                  <TextArea fx:id="txtExplanation" prefHeight="200.0" prefWidth="200.0" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
