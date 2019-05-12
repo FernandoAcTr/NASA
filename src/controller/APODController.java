@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -17,6 +16,7 @@ import javafx.scene.layout.VBox;
 import model.APODBean;
 import model.MyUtils;
 import services.APODService;
+import services.RequestException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,6 +59,7 @@ public class APODController implements Initializable {
 
     private APODBean apodBean;
     private boolean existData;
+    private String errorMessage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,8 +77,7 @@ public class APODController implements Initializable {
                     paneData.setVisible(true);
                 } else {
                     spnWait.setVisible(false);
-                    MyUtils.makeDialog("Error", "An erros has ocurred while trying get APOD. Please check your " +
-                            "Internet Connection", null, Alert.AlertType.ERROR).show();
+                    MyUtils.makeDialog("Error", errorMessage, null, Alert.AlertType.ERROR).show();
                 }
 
             }
@@ -100,9 +100,10 @@ public class APODController implements Initializable {
         try {
             apodBean = APODService.getAPOD();
         } catch (IOException e) {
-            System.out.println("Error while tryind to get APOD");
-            existData = false;
-            e.printStackTrace();
+            errorMessage = "An erros has ocurred while trying get APOD. Please check your \n" +
+                            "Internet Connection";
+        } catch (RequestException e) {
+            errorMessage = e.getMessage();
         }
     }
 
@@ -118,8 +119,8 @@ public class APODController implements Initializable {
     /*
        Si no existe datos del dia actual entonces se guarda un registro
      */
-    private void saveData(){
-        if (!existData){
+    private void saveData() {
+        if (!existData) {
 
         }
     }

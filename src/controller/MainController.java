@@ -11,9 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 
 import java.io.IOException;
 import java.net.URL;
@@ -85,18 +84,19 @@ public class MainController implements Initializable, SideMenuController.onItemC
     @Override
     public void onServiceOneClick() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/apod_window.fxml"));
-        double heigth = paneContent.getScene().getHeight();
-        double width = paneContent.getScene().getWidth();
+
         try {
             APODController controller = new APODController();
             loader.setController(controller);
+
             ScrollPane root = loader.load();
             VBox vBox = (VBox) root.getContent();
-            vBox.setPrefHeight(heigth);
-            vBox.setPrefWidth(width);
-            vBox.setFocusTraversable(false);
-            paneContent.getChildren().setAll(root);
+
             attachToRoot(root);
+            resizeRoot(vBox);
+
+            paneContent.getChildren().setAll(root);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,18 +105,17 @@ public class MainController implements Initializable, SideMenuController.onItemC
     @Override
     public void onServiceOneTwo() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/library_window.fxml"));
-        double heigth = paneContent.getScene().getHeight();
-        double width = paneContent.getScene().getWidth();
         try {
             LibraryController controller = new LibraryController();
             loader.setController(controller);
+
             ScrollPane root = loader.load();
             VBox vBox = (VBox) root.getContent();
-            vBox.setPrefHeight(heigth);
-            vBox.setPrefWidth(width);
-            vBox.setFocusTraversable(false);
-            paneContent.getChildren().setAll(root);
+
             attachToRoot(root);
+            resizeRoot(vBox);
+
+            paneContent.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,6 +132,26 @@ public class MainController implements Initializable, SideMenuController.onItemC
         AnchorPane.setRightAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
         AnchorPane.setLeftAnchor(root, 0.0);
+    }
+
+    private void resizeRoot(VBox vBox){
+        double heigth = paneContent.getScene().getHeight();
+        double width = paneContent.getScene().getWidth();
+        double screenHeigth = Screen.getPrimary().getBounds().getHeight();
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+
+        vBox.setPrefHeight(heigth);
+        vBox.setPrefWidth(width);
+        vBox.setFocusTraversable(false);
+        vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getClickCount() == 2){
+                    vBox.setPrefHeight(screenHeigth);
+                    vBox.setPrefWidth(screenWidth);
+                }
+            }
+        });
     }
 
     /**-----------------------------------------------------------------------------------------------**/
