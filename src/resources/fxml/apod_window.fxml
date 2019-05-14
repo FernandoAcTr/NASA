@@ -27,7 +27,7 @@
                         <Image url="@../images/dummyapod.jpg" />
                      </image>
                   </ImageView>
-                  <JFXSpinner fx:id="spnWait" />
+                  <JFXSpinner fx:id="spnWait" maxWidth="150.0" prefHeight="150.0" />
                </children>
             </StackPane>
             <GridPane fx:id="paneData">

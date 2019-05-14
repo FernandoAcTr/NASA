@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" styleClass="pane-default" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox alignment="CENTER" styleClass="pane-default" HBox.hgrow="NEVER">
+            <children>
+                <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+        </VBox>
+        <GridPane styleClass="pane-default" HBox.hgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" maxWidth="149.0" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="130.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Center:" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Date Created:" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Description:" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Nasa ID:" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Photographer:" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Secondary Creator:" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Location:" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Keywords:" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <Label text="Media Type:" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+                </Label>
+                <TextField fx:id="txtTitle" editable="false" GridPane.columnIndex="1">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextField fx:id="txtCenter" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextField fx:id="txtDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextArea fx:id="txtDescription" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="txtNasaID" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextField fx:id="txtPhothographer" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextField fx:id="txtSecondCreator" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextField fx:id="txtLocation" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <TextArea fx:id="txtKeywords" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <TextField fx:id="txtMediaType" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <styleClass>
+                  <String fx:value="pane-trasparent" />
+                  <String fx:value="lbl" />
+               </styleClass></TextField>
+                <Label text="Title:">
+                    <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-info" />
+                    </styleClass>
+                    <padding>
+                        <Insets right="5.0" />
+                    </padding>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../css/maincss.css" />
+      <URL value="@../css/scrollbar.css" />
+   </stylesheets>
+</HBox>

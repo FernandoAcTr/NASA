@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.File;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class MyUtils {
@@ -54,6 +55,33 @@ public class MyUtils {
         alert.setTitle(title);
         alert.setContentText(content);
         return alert;
+    }
+
+    /**
+     * Agrega saltos de linea a una cadena muy larga
+     * @return
+     */
+    public static String formatText(String text, int maxLength){
+        String formatExplain = "";
+        char character;
+
+        for (int i = 0, limit = 0; i < text.length(); i++, limit++) {
+
+            character = text.charAt(i);
+            formatExplain += character;
+
+            if(limit > maxLength)
+                if(character == ' '){
+                    formatExplain += "\n";
+                    limit = 0;
+                }
+        }
+
+        return formatExplain;
+    }
+
+    public static int getCurrentYear(){
+        return GregorianCalendar.getInstance().get(GregorianCalendar.YEAR);
     }
 
 }

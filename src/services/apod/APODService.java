@@ -1,8 +1,10 @@
-package services;
+package services.apod;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.APODBean;
+import services.RequestException;
+import services.Service;
 
 import java.io.IOException;
 

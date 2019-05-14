@@ -43,16 +43,6 @@
     -fx-border-radius: 0px;
 }
 
-.jfx-check-box{
-    -jfx-checked-color: #3b657e;
-    -jfx-unchecked-color: derive(white, -20%);
-    -fx-text-fill: white;
-    -fx-background-color: #3F477E;
-    -fx-pref-height: 40;
-    -fx-pref-width: 100;
-    -fx-alignment: center;
-}
-
 .item-search{
     -fx-text-fill: white;
     -fx-font-size: 15;
@@ -69,11 +59,6 @@
 
 .toolbar{
     -fx-background-color: #404040;
-}
-
-.jfx-hamburger-icon StackPane{
-    -fx-background-color : white;
-    -fx-background-radius : 5px;
 }
 
 .lbl{
@@ -102,7 +87,28 @@
     -fx-border-color: #000000;
 }
 
+/*-----------------------------sobre escritos-----------------------------------*/
+
+.jfx-hamburger-icon StackPane{
+    -fx-background-color : white;
+    -fx-background-radius : 5px;
+}
+
+.jfx-check-box{
+    -jfx-checked-color: #3b657e;
+    -jfx-unchecked-color: derive(white, -20%);
+    -fx-text-fill: white;
+    -fx-background-color: #3F477E;
+    -fx-pref-height: 40;
+    -fx-pref-width: 100;
+    -fx-alignment: center;
+}
+
 .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
     -fx-background-color: transparent;
 }
 
@@ -120,4 +126,9 @@
 
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
+}
+
+.split-pane .split-pane-divider{
+    -fx-background-color: #303030;
+    -fx-background-insets: 1;
 }

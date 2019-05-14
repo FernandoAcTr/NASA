@@ -42,4 +42,36 @@ public class Service {
 
         return JSONRes;
     }
+
+    /**
+     * Elimina las secuencias raras del URL que no se pueden eliminar por replaceAll()
+     * @param secuence
+     * @return
+     */
+    public static String removeSpecialCharacter(String secuence, String remove, String replace){
+
+        while (secuence.contains(remove)){
+
+            int n = secuence.indexOf(remove);
+            secuence = secuence.substring(0, n) + replace + secuence.substring(n + remove.length());
+
+        }
+
+        return secuence;
+    }
+
+    /**
+     * Quita las cadenas raras mas comunes del URL
+     * @param secuence
+     * @return
+     */
+    public static String removeCommonsCharacter(String secuence){
+        secuence = secuence.replaceAll(" ", "%20");
+        secuence = secuence.replaceAll("–", "%E2%80%93");
+        secuence = secuence.replaceAll("’", "%E2%80%99");
+        secuence = removeSpecialCharacter(secuence, "\\u2013", "%E2%80%93");
+        secuence = removeSpecialCharacter(secuence, "\\u2019", "%E2%80%99");
+
+        return secuence;
+    }
 }

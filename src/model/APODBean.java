@@ -78,22 +78,4 @@ public class APODBean {
         this.url = url;
     }
 
-    public String formatExplanation(String explanation){
-        String formatExplain = "";
-        char character;
-
-        for (int i = 0, limit = 0; i < explanation.length(); i++, limit++) {
-
-             character = explanation.charAt(i);
-             formatExplain += character;
-
-            if(limit > 150)
-                if(character == ' '){
-                    formatExplain += "\n";
-                    limit = 0;
-                }
-        }
-
-        return formatExplain;
-    }
 }

@@ -15,7 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import model.APODBean;
 import model.MyUtils;
-import services.APODService;
+import services.apod.APODService;
 import services.RequestException;
 
 import java.io.IOException;
@@ -66,41 +66,54 @@ public class APODController implements Initializable {
         initData();
         initComponents();
 
-        queryTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                if (apodBean != null) {
-                    initValues();
-                    saveData();
-                    spnWait.setVisible(false);
-                    imageAPOD.setVisible(true);
-                    paneData.setVisible(true);
-                } else {
-                    spnWait.setVisible(false);
-                    MyUtils.makeDialog("Error", errorMessage, null, Alert.AlertType.ERROR).show();
-                }
-
-            }
-        });
-
         Thread thread = new Thread(queryTask);
+        thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
     }
 
     private void initData() {
         existData = false;
         apodBean = null;
+
+        queryTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                if (apodBean != null) {
+                    setValues(); //muestra los valores obtenidos
+                    saveData(); //si no existian guarda un registro en la BD
+                    spnWait.setVisible(false);
+                    imageAPOD.setVisible(true);
+                    paneData.setVisible(true);
+                } else {
+                    spnWait.setVisible(false);
+                    MyUtils.makeDialog("Error", null, errorMessage, Alert.AlertType.ERROR).show();
+                }
+
+            }
+        });
+
     }
 
     private void initComponents() {
         paneData.setVisible(false);
     }
 
+    private void setValues() {
+        txtCredit.setText(apodBean.getCopyright());
+        txtDate.setText(apodBean.getDate());
+        txtMedia.setText(apodBean.getMedia_type());
+        txtTitle.setText(apodBean.getTitle());
+        txtVersion.setText(apodBean.getService_version());
+        txtUrl.setText(apodBean.getUrl());
+        txtExplanation.setText(MyUtils.formatText(apodBean.getExplanation(), 150));
+        imageAPOD.setImage(new Image(apodBean.getUrl()));
+    }
+
     private void requestAPOD() {
         try {
             apodBean = APODService.getAPOD();
         } catch (IOException e) {
-            errorMessage = "An erros has ocurred while trying get APOD. Please check your \n" +
+            errorMessage = "An error had ocurred while trying get APOD. Please check your " +
                             "Internet Connection";
         } catch (RequestException e) {
             errorMessage = e.getMessage();
@@ -125,16 +138,6 @@ public class APODController implements Initializable {
         }
     }
 
-    private void initValues() {
-        txtCredit.setText(apodBean.getCopyright());
-        txtDate.setText(apodBean.getDate());
-        txtMedia.setText(apodBean.getMedia_type());
-        txtTitle.setText(apodBean.getTitle());
-        txtVersion.setText(apodBean.getService_version());
-        txtUrl.setText(apodBean.getUrl());
-        txtExplanation.setText(apodBean.formatExplanation(apodBean.getExplanation()));
-        imageAPOD.setImage(new Image(apodBean.getUrl()));
-    }
 
     private Task<Void> queryTask = new Task<Void>() {
         @Override
