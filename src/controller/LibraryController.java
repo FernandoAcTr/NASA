@@ -18,14 +18,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.MyUtils;
-import services.library.Collection;
-import services.library.Item;
-import services.library.LibraryCollection;
-import services.library.LibraryService;
+import services.library.*;
 import services.RequestException;
 
 import java.io.IOException;
@@ -58,11 +57,23 @@ public class LibraryController implements Initializable {
     @FXML
     private JFXSpinner spnWait;
 
+    @FXML
+    private VBox paneRoot;
+
+    @FXML
+    private JFXButton btnPrevious;
+
+    @FXML
+    private JFXButton btnNext;
+
+
     private LibraryCollection libraryCollection;
     private LibraryService libraryService;
     private String errorMessage;
 
     private ThreadGroup searchGroup;
+
+    private int page;
 
     public LibraryController() {
     }
@@ -74,6 +85,7 @@ public class LibraryController implements Initializable {
     }
 
     private void initData() {
+        page = 1;
         searchGroup = new ThreadGroup("search");
         libraryService = new LibraryService();
     }
@@ -81,23 +93,55 @@ public class LibraryController implements Initializable {
     private void initComponents() {
 
         slideTo.setValue(MyUtils.getCurrentYear());
-        spnWait.setVisible(false);
+        hideWaitSpin();
 
         paneMedia.setPrefHeight(Screen.getPrimary().getBounds().getHeight());
 
         btnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                spnWait.setVisible(true);
-                paneMedia.setVisible(false);
+                page = 1;
 
                 if (slideFrom.getValue() > slideTo.getValue())
                     MyUtils.makeDialog("Warning", null, "The start year is higer than end year",
                             Alert.AlertType.WARNING).show();
-                else
+                else {
+                    showWaitSpin();
                     startSearchThread();
+                }
             }
         });
+
+        paneRoot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2) {
+                    double screenHeigth = Screen.getPrimary().getBounds().getHeight();
+                    double screenWidth = Screen.getPrimary().getBounds().getWidth();
+                    paneRoot.setPrefHeight(screenHeigth);
+                    paneRoot.setPrefWidth(screenWidth);
+                    paneMedia.setPrefWidth(screenWidth);
+                }
+            }
+        });
+
+        btnNext.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                spnWait.setVisible(true);
+                paneMedia.setVisible(false);
+                goNextPage(true);
+            }
+        });
+
+        btnPrevious.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showWaitSpin();
+                goNextPage(false);
+            }
+        });
+
     }
 
     private void startSearchThread() {
@@ -117,8 +161,8 @@ public class LibraryController implements Initializable {
                 if (libraryCollection != null) {
                     Collection collection = libraryCollection.getCollection();
                     showItems(collection);
-                    spnWait.setVisible(false);
-                    paneMedia.setVisible(true);
+                    showNavigateButtons();
+                    hideWaitSpin();
                 } else
                     MyUtils.makeDialog("Error", null,
                             errorMessage, Alert.AlertType.ERROR).show();
@@ -136,9 +180,10 @@ public class LibraryController implements Initializable {
         int to = (int) slideTo.getValue();
         try {
 
-            String url = libraryService.getURL(search, "1", checkImages.isSelected(), checkVideos.isSelected(),
+            String url = libraryService.getURL(search, page + "", checkImages.isSelected(), checkVideos.isSelected(),
                     checkAudio.isSelected(), from + "", to + "");
             String JSONResult = libraryService.getRequest(url);
+
             libraryCollection = libraryService.getLibraryCollection(JSONResult);
 
         } catch (IOException e) {
@@ -353,12 +398,77 @@ public class LibraryController implements Initializable {
 
     /**
      * Start a thread
+     *
      * @param task
      */
-    private void startTread(Task task){
+    private void startTread(Task task) {
         Thread thread = new Thread(searchGroup, task);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
+    }
+
+    /**
+     * Avanza a la siguiente pagina o a la anterior
+     *
+     * @param next true para la siguiente, false para retroceder una pagina
+     */
+    private void goNextPage(boolean next) {
+        boolean go = false;
+
+        if (libraryCollection != null) {
+            Collection collection = libraryCollection.getCollection();
+
+            for (LinkCollection link : collection.getLinks()) {
+                if (next) {
+                    if (link.getPrompt().equalsIgnoreCase("next")) {
+                        page++;
+                        go = true;
+                    }
+                } else if (link.getPrompt().equalsIgnoreCase("Previous")) {
+                    page--;
+                    go = true;
+                }
+            }
+
+            if (go)
+                startSearchThread();
+        }
+    }
+
+    /**
+     * Muestra u oculta los botones next y previous
+     */
+    private void showNavigateButtons() {
+        boolean previous = false;
+        boolean next = false;
+
+        if (libraryCollection != null) {
+            Collection collection = libraryCollection.getCollection();
+
+            if (collection.getLinks() != null)
+                for (LinkCollection link : collection.getLinks()) {
+
+                    if (link.getPrompt().equalsIgnoreCase("next"))
+                        next = true;
+
+                    if (link.getPrompt().equalsIgnoreCase("Previous"))
+                        previous = true;
+
+                }
+
+            btnPrevious.setVisible(previous);
+            btnNext.setVisible(next);
+        }
+    }
+
+    private void showWaitSpin() {
+        spnWait.setVisible(true);
+        paneMedia.setVisible(false);
+    }
+
+    private void hideWaitSpin() {
+        spnWait.setVisible(false);
+        paneMedia.setVisible(true);
     }
 
 }

@@ -137,21 +137,9 @@ public class MainController implements Initializable, SideMenuController.onItemC
     private void resizeRoot(VBox vBox){
         double heigth = paneContent.getScene().getHeight();
         double width = paneContent.getScene().getWidth();
-        double screenHeigth = Screen.getPrimary().getBounds().getHeight();
-        double screenWidth = Screen.getPrimary().getBounds().getWidth();
-
         vBox.setPrefHeight(heigth);
         vBox.setPrefWidth(width);
         vBox.setFocusTraversable(false);
-        vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getClickCount() == 2){
-                    vBox.setPrefHeight(screenHeigth);
-                    vBox.setPrefWidth(screenWidth);
-                }
-            }
-        });
     }
 
     /**-----------------------------------------------------------------------------------------------**/
