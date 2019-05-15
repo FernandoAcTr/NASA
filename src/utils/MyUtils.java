@@ -1,16 +1,15 @@
-package model;
+package utils;
 
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class MyUtils {
 
@@ -80,8 +79,30 @@ public class MyUtils {
         return formatExplain;
     }
 
+    /**
+     * get current year
+     * @return
+     */
     public static int getCurrentYear(){
         return GregorianCalendar.getInstance().get(GregorianCalendar.YEAR);
+    }
+
+    /**
+     * Add Listener to root pane to resize at screen heigth at double click on it
+     * @param root
+     */
+    public static void setResizeListener(Pane root){
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getClickCount() == 2){
+                    double screenHeigth = Screen.getPrimary().getBounds().getHeight();
+                    double screenWidth = Screen.getPrimary().getBounds().getWidth();
+                    root.setPrefHeight(screenHeigth);
+                    root.setPrefWidth(screenWidth);
+                }
+            }
+        });
     }
 
 }

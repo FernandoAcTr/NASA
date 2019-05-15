@@ -1,22 +1,25 @@
-package controller;
+package controller.library;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import model.MyUtils;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
+import utils.MyUtils;
 import services.library.Data;
 import services.library.Item;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ImageViewerController implements Initializable {
+public class WebViewerController implements Initializable {
 
     @FXML
-    private ImageView imageView;
+    private WebView webView;
 
     @FXML
     private TextField txtTitle;
@@ -50,12 +53,19 @@ public class ImageViewerController implements Initializable {
 
     private Item item;
     private Data data;
-    private String imageURL;
+    private String webURL;
 
-    public ImageViewerController(Item item, String imageURL) {
+    public WebViewerController(Item item, String webURL, Stage stage) {
         this.item = item;
         this.data = item.getData().get(0);
-        this.imageURL = imageURL;
+        this.webURL = webURL;
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                webView.getEngine().load(null);
+            }
+        });
     }
 
     @Override
@@ -74,7 +84,8 @@ public class ImageViewerController implements Initializable {
         txtPhothographer.setText(data.getPhotographer());
         txtSecondCreator.setText(data.getSecondary_creator());
         txtKeywords.setText(getKeyWords());
-        imageView.setImage(new Image(imageURL));
+        webView.getEngine().load(webURL);
+
     }
 
     private String getKeyWords(){

@@ -53,9 +53,9 @@
                         <MaterialDesignIconView glyphName="FILE_VIDEO" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnService3" layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="200.0" styleClass="side_item" text="Service 3">
+                  <JFXButton fx:id="btnService3" layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="200.0" styleClass="side_item" text="Techport">
                      <graphic>
-                        <MaterialDesignIconView size="25" />
+                        <MaterialDesignIconView glyphName="CHIP" size="25" />
                      </graphic>
                   </JFXButton>
                   <JFXButton fx:id="btnLogOut" layoutX="10.0" layoutY="104.0" prefHeight="35.0" prefWidth="200.0" styleClass="side_item" text="Log Out">

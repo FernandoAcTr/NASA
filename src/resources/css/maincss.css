@@ -20,6 +20,14 @@
     -fx-background-position: center;
 }
 
+.rootpane4{
+    -fx-background-image: url("/resources/images/wallper3.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: inherit;
+    -fx-background-position: center;
+}
+
+
 /*-------------------------------------escena 2-------------------------------*/
 
 .textfield_search{
@@ -131,4 +139,50 @@
 .split-pane .split-pane-divider{
     -fx-background-color: #303030;
     -fx-background-insets: 1;
+}
+
+.jfx-date-picker{
+    -jfx-default-color: black;
+}
+
+.jfx-date-picker .input-line {
+    -fx-background-color: white;
+}
+
+.jfx-date-picker .input-focused-line {
+    -fx-background-color: white;
+}
+
+.jfx-date-picker .text-field{
+    -jfx-unfocus-color: white;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.list-view{
+    -fx-background-color: transparent;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-text-alignment: center;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-text-alignment: center;
+}
+
+.list-view .list-cell:selected{
+    /*-fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);*/
+    -fx-background-color: rgba(0,147,255,0.7);
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: rgba(0,147,255,0.4);
 }

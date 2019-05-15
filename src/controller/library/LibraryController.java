@@ -1,4 +1,4 @@
-package controller;
+package controller.library;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -18,14 +18,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import model.MyUtils;
 import services.library.*;
 import services.RequestException;
+import utils.MyUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +91,7 @@ public class LibraryController implements Initializable {
 
     private void initComponents() {
 
+        MyUtils.setResizeListener(paneRoot);
         slideTo.setValue(MyUtils.getCurrentYear());
         hideWaitSpin();
 
@@ -108,19 +108,6 @@ public class LibraryController implements Initializable {
                 else {
                     showWaitSpin();
                     startSearchThread();
-                }
-            }
-        });
-
-        paneRoot.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.getClickCount() == 2) {
-                    double screenHeigth = Screen.getPrimary().getBounds().getHeight();
-                    double screenWidth = Screen.getPrimary().getBounds().getWidth();
-                    paneRoot.setPrefHeight(screenHeigth);
-                    paneRoot.setPrefWidth(screenWidth);
-                    paneMedia.setPrefWidth(screenWidth);
                 }
             }
         });

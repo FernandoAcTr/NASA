@@ -1,4 +1,4 @@
-package controller;
+package controller.apod;
 
 import com.jfoenix.controls.JFXSpinner;
 import javafx.concurrent.Task;
@@ -11,14 +11,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import model.APODBean;
-import model.MyUtils;
 import services.apod.APODService;
 import services.RequestException;
+import utils.MyUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -99,17 +97,7 @@ public class APODController implements Initializable {
     private void initComponents() {
         paneData.setVisible(false);
 
-        paneRoot.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getClickCount() == 2){
-                    double screenHeigth = Screen.getPrimary().getBounds().getHeight();
-                    double screenWidth = Screen.getPrimary().getBounds().getWidth();
-                    paneRoot.setPrefHeight(screenHeigth);
-                    paneRoot.setPrefWidth(screenWidth);
-                }
-            }
-        });
+       MyUtils.setResizeListener(paneRoot);
     }
 
     private void setValues() {

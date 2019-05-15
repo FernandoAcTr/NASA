@@ -3,6 +3,9 @@ package controller;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import controller.apod.APODController;
+import controller.library.LibraryController;
+import controller.techport.TechportController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +15,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 
 import java.io.IOException;
 import java.net.URL;
@@ -123,8 +125,20 @@ public class MainController implements Initializable, SideMenuController.onItemC
 
     @Override
     public void onServiceOneThree() {
-        System.out.println("click service 3");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/techport_window.fxml"));
+        try {
+            TechportController controller = new TechportController();
+            loader.setController(controller);
 
+            Parent root = loader.load();
+
+            attachToRoot(root);
+
+            paneContent.getChildren().setAll(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void attachToRoot(Parent root){
@@ -134,6 +148,10 @@ public class MainController implements Initializable, SideMenuController.onItemC
         AnchorPane.setLeftAnchor(root, 0.0);
     }
 
+    /**
+     * Resize a pane inside a ScrollPane, becouse Node's inside ScrollPane does not fill all the area automatically
+     * @param vBox
+     */
     private void resizeRoot(VBox vBox){
         double heigth = paneContent.getScene().getHeight();
         double width = paneContent.getScene().getWidth();
