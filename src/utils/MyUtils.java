@@ -9,6 +9,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.util.GregorianCalendar;
 
 public class MyUtils {
@@ -103,6 +104,21 @@ public class MyUtils {
                 }
             }
         });
+    }
+
+    /**
+     * Add extension to a File
+     * @param file
+     * @param extension pdf, func, docx...
+     * @return
+     */
+    public static File refactorFileName(File file, String extension){
+        File refactorFile = file;
+        if (file != null)
+            if (!file.getName().endsWith("."+extension))
+                refactorFile = new File(file.getPath() + "."+extension);
+
+        return refactorFile;
     }
 
 }

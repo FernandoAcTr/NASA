@@ -16,12 +16,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import services.techport.*;
 import utils.DownloadUtils;
 import utils.MyUtils;
+import utils.PDFReport;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +92,9 @@ public class ProjectController implements Initializable {
     @FXML
     private JFXSpinner spnWait;
 
+    @FXML
+    private Button btnReport;
+
     private Project project;
     private ArrayList<LibraryFile> listImages;
     private ArrayList<LibraryFile> listDocs;
@@ -142,11 +148,12 @@ public class ProjectController implements Initializable {
             }
         });
 
-        btnPrevious.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showPreviousImage();
-            }
+        btnPrevious.setOnAction(event -> showPreviousImage());
+
+        btnReport.setOnAction(event -> {
+            File saveFile = getSaveFile();
+            if(saveFile != null)
+                createPDF(saveFile);
         });
     }
 
@@ -491,6 +498,163 @@ public class ProjectController implements Initializable {
         lblTitle.getStyleClass().addAll("lbl");
         lblTitle.setPrefHeight(30);
         return lblTitle;
+    }
+
+    private void createPDF(File file){
+        PDFReport report = null;
+        try {
+            report = new PDFReport(file.getPath(), project.getTitle());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        report.addParagraph("ID: " + project.getId());
+        report.addParagraph("Acronym: " + project.getAcronym());
+        if(project.getStatus() != null) report.addParagraph("Status: " + project.getStatus());
+        txtAcronym.setText(project.getAcronym());
+        if (project.getDescription() != null)
+            report.addParagraph("Description: " + project.getDescription().replaceAll("<p>", "").replaceAll("</p>", ""));
+        if (project.getBenefits() != null)
+            report.addParagraph("Benefits: " + project.getBenefits().replaceAll("<p>", "").replaceAll("</p>", ""));
+
+        if(project.getStartDate() != null) report.addParagraph("Start Date: " + project.getStartDate());
+        if(project.getEndDate() != null) report.addParagraph("End Date: " + project.getEndDate());
+        if(project.getLastUpdated() != null) report.addParagraph("Last Update: " + project.getLastUpdated());
+        if(project.getSupportedMissionType() != null) report.addParagraph("Support Mission Type: " + project.getSupportedMissionType());
+        if(project.getResponsibleProgram() != null) report.addParagraph("Responsible Program: " + project.getResponsibleProgram());
+        if(project.getTechnologyMaturityStart() != null) report.addParagraph("Technology Maturity Start: " + project.getTechnologyMaturityStart());
+        if(project.getTechnologyMaturityCurrent() != null) report.addParagraph("Technology Maturity Current: " + project.getTechnologyMaturityCurrent());
+        if(project.getTechnologyMaturityEnd() != null) report.addParagraph("Technology Maturity End: " + project.getTechnologyMaturityEnd());
+        if(project.getWebsite() != null) report.addParagraph("Website: " + project.getWebsite());
+
+        if (project.getDestinations() != null){
+            String mess = "Destinations: ";
+            for (String s : project.getDestinations())
+                mess += s + ", ";
+            report.addParagraph(mess.substring(0, mess.length()-2));
+        }
+
+        if (project.getWorkLocations() != null){
+            String mess = "Work Locations: ";
+            for (String s : project.getWorkLocations())
+                mess += s + ", ";
+            report.addParagraph(mess.substring(0, mess.length()-2));
+        }
+
+        if (project.getProgramDirectors() != null){
+            report.addSubtitle("Program Directors:");
+            for (String s : project.getProgramDirectors())
+                report.addParagraph("- " + s);
+        }
+
+        if (project.getProjectManagers() != null){
+            report.addSubtitle("Project Managers:");
+            for (String s : project.getProjectManagers())
+                report.addParagraph("- " + s);
+        }
+
+        if (project.getPrincipalInvestigators() != null){
+            report.addSubtitle("Principal Investigators:");
+            for (String s : project.getPrincipalInvestigators())
+                report.addParagraph("- " + s);
+        }
+
+        if (project.getCoInvestigators() != null){
+            report.addSubtitle("Co-Investigators:");
+            for (String s : project.getCoInvestigators())
+                report.addParagraph("- " + s);
+        }
+
+        if(project.getLeadOrganization() != null){
+            report.addSubtitle("Leader Organization:");
+            Organization or = project.getLeadOrganization();
+            report.addParagraph("Name: " + or.getName());
+            report.addParagraph("Acronym: " + or.getAcronym());
+            report.addParagraph("City: " + or.getCity());
+            report.addParagraph("State: " + or.getState());
+            report.addParagraph("Type: " + or.getType());
+        }
+
+        if(project.getSupportingOrganizations() != null){
+            report.addSubtitle("Supporting Organizations:");
+            String headers[] = {"Name", "Acronym", "City", "State", "Type"};
+            String values[][] = new String[project.getSupportingOrganizations().size()][5];
+
+            for (int row = 0; row < project.getSupportingOrganizations().size(); row++) {
+                Organization or = project.getSupportingOrganizations().get(row);
+                values[row][0] = or.getName();
+                values[row][1] = or.getAcronym();
+                values[row][2] = or.getCity();
+                values[row][3] = or.getState();
+                values[row][4] = or.getType();
+            }
+
+            try {
+                report.addTable(headers, values);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(project.getCoFundingPartners() != null){
+            report.addSubtitle("Co-funding Partners:");
+            String headers[] = {"Name", "Acronym", "City", "State", "Type"};
+            String values[][] = new String[project.getSupportingOrganizations().size()][5];
+
+            for (int row = 0; row < project.getSupportingOrganizations().size(); row++) {
+                Organization or = project.getCoFundingPartners().get(row);
+                values[row][0] = or.getName();
+                values[row][1] = or.getAcronym();
+                values[row][2] = or.getCity();
+                values[row][3] = or.getState();
+                values[row][4] = or.getType();
+            }
+
+            try {
+                report.addTable(headers, values);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(project.getPrimaryTas() != null){
+            report.addSubtitle("Principal Impact Area's");
+            String mess = "";
+            for (ImpactArea a : project.getPrimaryTas())
+                mess += a.getName() + ", ";
+
+            report.addParagraph(mess.substring(0, mess.length()-2));
+        }
+
+        if(project.getAdditionalTas() != null){
+            report.addSubtitle("Additional Impact Area's");
+            String mess = "";
+            for (ImpactArea a : project.getAdditionalTas())
+                mess += a.getName() + ", ";
+
+            report.addParagraph(mess.substring(0, mess.length()-2));
+        }
+
+        if(listImages.size() > 0){
+            report.addSubtitle("Images");
+            for (LibraryFile it : listImages){
+                try {
+                    report.addImage(it.getLocalFile().getAbsolutePath(), it.getTitle());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        report.closeDocument();
+    }
+
+    private File getSaveFile(){
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialFileName("*.pdf");
+        chooser.setTitle("Save as...");
+        File file = chooser.showSaveDialog(btnReport.getScene().getWindow());
+        return MyUtils.refactorFileName(file, "pdf");
     }
 
 }

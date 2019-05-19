@@ -266,7 +266,7 @@
         </ScrollPane>
       <HBox alignment="CENTER">
          <children>
-            <JFXButton text="Create PDF">
+            <JFXButton fx:id="btnReport" text="Export to PDF">
                <styleClass>
                   <String fx:value="lbl" />
                   <String fx:value="lbl-info" />
