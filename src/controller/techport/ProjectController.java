@@ -510,8 +510,8 @@ public class ProjectController implements Initializable {
 
         report.addParagraph("ID: " + project.getId());
         report.addParagraph("Acronym: " + project.getAcronym());
-        if(project.getStatus() != null) report.addParagraph("Status: " + project.getStatus());
-        txtAcronym.setText(project.getAcronym());
+        if(project.getStatus() != null)
+            report.addParagraph("Status: " + project.getStatus());
         if (project.getDescription() != null)
             report.addParagraph("Description: " + project.getDescription().replaceAll("<p>", "").replaceAll("</p>", ""));
         if (project.getBenefits() != null)
@@ -582,11 +582,11 @@ public class ProjectController implements Initializable {
 
             for (int row = 0; row < project.getSupportingOrganizations().size(); row++) {
                 Organization or = project.getSupportingOrganizations().get(row);
-                values[row][0] = or.getName();
-                values[row][1] = or.getAcronym();
-                values[row][2] = or.getCity();
-                values[row][3] = or.getState();
-                values[row][4] = or.getType();
+                values[row][0] = or.getName() != null ? or.getName() : "null";
+                values[row][1] = or.getAcronym() != null ? or.getAcronym() : "null";
+                values[row][2] = or.getCity() != null ? or.getCity() : "null";
+                values[row][3] = or.getState() != null ? or.getState() : "null";
+                values[row][4] = or.getType() != null ? or.getType() : "null";
             }
 
             try {
@@ -599,15 +599,15 @@ public class ProjectController implements Initializable {
         if(project.getCoFundingPartners() != null){
             report.addSubtitle("Co-funding Partners:");
             String headers[] = {"Name", "Acronym", "City", "State", "Type"};
-            String values[][] = new String[project.getSupportingOrganizations().size()][5];
+            String values[][] = new String[project.getCoFundingPartners().size()][5];
 
-            for (int row = 0; row < project.getSupportingOrganizations().size(); row++) {
+            for (int row = 0; row < project.getCoFundingPartners().size(); row++) {
                 Organization or = project.getCoFundingPartners().get(row);
-                values[row][0] = or.getName();
-                values[row][1] = or.getAcronym();
-                values[row][2] = or.getCity();
-                values[row][3] = or.getState();
-                values[row][4] = or.getType();
+                values[row][0] = or.getName() != null ? or.getName() : "null";
+                values[row][1] = or.getAcronym() != null ? or.getAcronym() : "null";
+                values[row][2] = or.getCity() != null ? or.getCity() : "null";
+                values[row][3] = or.getState() != null ? or.getState() : "null";
+                values[row][4] = or.getType() != null ? or.getType() : "null";
             }
 
             try {
