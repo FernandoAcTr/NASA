@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" styleClass="pane-default" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="TOP_RIGHT">
+            <children>
+                <Button fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="pane-trasparent" text="Button">
+                    <graphic>
+                        <MaterialDesignIconView fill="#ee5252" glyphName="CLOSE_BOX" size="30" />
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+        <ScrollPane hbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="paneContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" styleClass="pane-default">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <HBox fx:id="paneImage" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                                    <children>
+                                        <JFXButton fx:id="btnPrevious" contentDisplay="GRAPHIC_ONLY">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_LEFT" size="60" />
+                                            </graphic>
+                                        </JFXButton>
+                                        <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/nasa.png" />
+                                            </image>
+                                        </ImageView>
+                                        <JFXButton fx:id="btnNext" contentDisplay="GRAPHIC_ONLY">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_RIGHT" size="70" />
+                                            </graphic>
+                                        </JFXButton>
+                                    </children>
+                                </HBox>
+                                <JFXSpinner fx:id="spnWait" maxHeight="150.0" maxWidth="150.0" />
+                            </children>
+                        </StackPane>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Label fx:id="lblImageFooter" alignment="CENTER" styleClass="lbl" text="Label" />
+                            </children>
+                        </HBox>
+                        <GridPane minWidth="1000.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="190.0" prefWidth="220.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="847.0" minWidth="10.0" prefWidth="780.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="100.0" prefHeight="100.0" valignment="TOP" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="100.0" prefHeight="100.0" valignment="TOP" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="ID:">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Title:" GridPane.rowIndex="1">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Description:" GridPane.rowIndex="2">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Benefits:" GridPane.rowIndex="3">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Acronym:" GridPane.rowIndex="4">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Last Update:" GridPane.rowIndex="5">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Start Date:" GridPane.rowIndex="6">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="End Date:" GridPane.rowIndex="7">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Responsible Program:" GridPane.rowIndex="8">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Status:" GridPane.rowIndex="9">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Suppor Mission Type:" GridPane.rowIndex="10">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Technology Maturity Start:" GridPane.rowIndex="11">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Technology Maturity Current:" GridPane.rowIndex="12">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <Label text="Website:" GridPane.rowIndex="13">
+                                    <styleClass>
+                                        <String fx:value="lbl" />
+                                        <String fx:value="lbl-info" />
+                                    </styleClass>
+                                </Label>
+                                <TextField fx:id="txtID" editable="false" GridPane.columnIndex="1">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtTitle" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextArea fx:id="txtDescription" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextArea>
+                                <TextArea fx:id="txtBenefits" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextArea>
+                                <TextField fx:id="txtAcronym" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtlastUpdate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtStartDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtEndDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtResponsive" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtStatus" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtMissionType" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtTechStart" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtTechCurrent" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                                <TextField fx:id="txtWebsite" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                    <styleClass>
+                                        <String fx:value="pane-trasparent" />
+                                        <String fx:value="lbl" />
+                                    </styleClass>
+                                </TextField>
+                            </children>
+                        </GridPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+      <HBox alignment="CENTER">
+         <children>
+            <JFXButton text="Create PDF">
+               <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-info" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </HBox>
+    </children>
+    <stylesheets>
+        <URL value="@../css/projectcss.css" />
+        <URL value="@../css/scrollbar.css" />
+      <URL value="@../css/table_styles.css" />
+    </stylesheets>
+   <padding>
+      <Insets bottom="16.0" right="16.0" />
+   </padding>
+</VBox>

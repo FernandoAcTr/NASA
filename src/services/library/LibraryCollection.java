@@ -101,12 +101,14 @@ public class LibraryCollection {
 
         public String getLinkThumb(){
             String links[] = splitLinks(JSONResult);
+            int count = 0;
             for (String l : links) {
-                if (l.contains("thumb")) {
+                if (l.contains("thumb") && count > 2) {
                     l = removeJSONCharacters(l);
                     return Service.removeCommonsCharacter(l).replaceAll("http", "https");
                     //System.out.println(removeJSONCharacters(l));
                 }
+                count++;
             }
 
             return null;

@@ -156,6 +156,13 @@ public class LibraryController implements Initializable {
             }
         });
 
+        searchTask.setOnCancelled(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                startSearchThread();
+            }
+        });
+
         Thread thread = new Thread(searchGroup, searchTask);
         thread.start();
 

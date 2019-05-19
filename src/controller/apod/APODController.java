@@ -13,6 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.APODBean;
 import services.apod.APODService;
 import services.RequestException;
@@ -60,6 +62,10 @@ public class APODController implements Initializable {
     private APODBean apodBean;
     private boolean existData;
     private String errorMessage;
+
+    public APODController(){
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -138,7 +138,7 @@
                         <String fx:value="pane-trasparent" />
                         <String fx:value="lbl" />
                      </styleClass></TextField>
-                  <TextArea fx:id="txtExplanation" prefHeight="200.0" prefWidth="200.0" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextArea fx:id="txtExplanation" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="lbl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
