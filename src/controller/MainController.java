@@ -11,10 +11,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import utils.MyUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +42,7 @@ public class MainController implements Initializable, SideMenuController.onItemC
         initComponents();
     }
 
-    private void initComponents(){
+    private void initComponents() {
         initSideMenu();
         initHamburguer();
     }
@@ -47,11 +50,11 @@ public class MainController implements Initializable, SideMenuController.onItemC
     /*----------------------------------------------------------------------------------------------
                                         Init Methods
      ----------------------------------------------------------------------------------------------*/
-    private void initData(){
+    private void initData() {
         userName = "Fernando Acosta";
     }
 
-    private void initSideMenu(){
+    private void initSideMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/side_bar.fxml"));
         try {
             SideMenuController controller = new SideMenuController(this, userName);
@@ -63,16 +66,16 @@ public class MainController implements Initializable, SideMenuController.onItemC
         }
     }
 
-    private void initHamburguer(){
+    private void initHamburguer() {
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburguer);
         transition.setRate(-1);
         hamburguer.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                transition.setRate(transition.getRate()*-1);
+                transition.setRate(transition.getRate() * -1);
                 transition.play();
 
-                if(drawer.isClosed())
+                if (drawer.isClosed())
                     drawer.open();
                 else
                     drawer.close();
@@ -141,7 +144,28 @@ public class MainController implements Initializable, SideMenuController.onItemC
         }
     }
 
-    private void attachToRoot(Parent root){
+    @Override
+    public void onLogOut() {
+        paneContent.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/login_window.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+            Scene scene = new Scene(root);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.setMaximized(true);
+            primaryStage.setResizable(false);
+
+            MyUtils.undecorateWindow(primaryStage, root, false);
+
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void attachToRoot(Parent root) {
         AnchorPane.setTopAnchor(root, 0.0);
         AnchorPane.setRightAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
@@ -150,9 +174,10 @@ public class MainController implements Initializable, SideMenuController.onItemC
 
     /**
      * Resize a pane inside a ScrollPane, becouse Node's inside ScrollPane does not fill all the area automatically
+     *
      * @param vBox
      */
-    private void resizeRoot(VBox vBox){
+    private void resizeRoot(VBox vBox) {
         double heigth = paneContent.getScene().getHeight();
         double width = paneContent.getScene().getWidth();
         vBox.setPrefHeight(heigth);

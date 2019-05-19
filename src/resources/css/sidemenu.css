@@ -14,7 +14,7 @@
     -fx-fill: white;
 }
 
-.rootpane{
+.root-pane{
     -fx-background-color: #404040;
     -fx-border-width: 0 0 0 0;
 }

@@ -11,15 +11,15 @@ import utils.MyUtils;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/main_window.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/login_window.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
 
-        MyUtils.undecorateWindow(primaryStage, root, true);
+        MyUtils.undecorateWindow(primaryStage, root, false);
 
         primaryStage.show();
     }

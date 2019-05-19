@@ -1,0 +1,50 @@
+.lbl {
+    -fx-text-fill: white;
+}
+
+.lbl-info {
+    -fx-font-weight: bold;
+}
+
+.lbl-h1 {
+    -fx-font-size: 25;
+}
+
+.lbl-h2 {
+    -fx-font-size: 18;
+}
+
+.root-pane {
+    -fx-background-color: rgba(64, 64, 64, 0.8);
+}
+
+.singin-pane {
+    -fx-background-color: rgba(60, 63, 64, 0.4);
+}
+
+.jfx-text-field{
+    -jfx-focus-colorColor: #3cc656;
+    -jfx-unfocus-colorColor: #c2b6b6;
+    -jfx-label-floatBoolean: true;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.jfx-password-field{
+    -jfx-focus-colorColor: #3cc656;
+    -jfx-unfocus-colorColor: #c2b6b6;
+    -jfx-label-floatBoolean: true;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.button-login{
+    -fx-text-fill: white;
+    -fx-background-color: rgba(60, 63, 64, 1);
+}
+
+.button-close{
+    -fx-background-color: transparent;
+    -fx-content-display: graphic-only;
+}
+

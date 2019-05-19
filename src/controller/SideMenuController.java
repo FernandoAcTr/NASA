@@ -71,6 +71,13 @@ public class SideMenuController implements Initializable {
             }
         });
 
+        btnLogOut.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                itemClick.onLogOut();
+            }
+        });
+
         btnExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -83,5 +90,6 @@ public class SideMenuController implements Initializable {
         void onServiceOneClick();
         void onServiceOneTwo();
         void onServiceOneThree();
+        void onLogOut();
     }
 }
