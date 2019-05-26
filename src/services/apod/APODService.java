@@ -2,7 +2,7 @@ package services.apod;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.APODBean;
+import controller.apod.APODBean;
 import services.RequestException;
 import services.Service;
 

@@ -22,11 +22,7 @@
          <children>
             <StackPane>
                <children>
-                  <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../images/dummyapod.jpg" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" visible="false"/>
                   <JFXSpinner fx:id="spnWait" maxWidth="150.0" prefHeight="150.0" />
                </children>
             </StackPane>

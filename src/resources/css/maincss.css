@@ -95,7 +95,7 @@
     -fx-border-color: #000000;
 }
 
-/*-----------------------------sobre escritos-----------------------------------*/
+/*-----------------------------sobreescritos-----------------------------------*/
 
 .jfx-hamburger-icon StackPane{
     -fx-background-color : white;
@@ -191,6 +191,11 @@
 }
 
 .jfx-text-field{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.jfx-password-field{
     -fx-prompt-text-fill: white;
     -fx-text-fill: white;
 }

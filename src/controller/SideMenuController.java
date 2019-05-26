@@ -6,7 +6,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
@@ -14,10 +18,10 @@ import java.util.ResourceBundle;
 
 public class SideMenuController implements Initializable {
     @FXML
-    private ImageView imageViewFace;
+    private ImageView imageViewCover;
 
     @FXML
-    private Circle imageViewUser;
+    private Circle circleUser;
 
     @FXML
     private Label lblUserName;
@@ -40,15 +44,27 @@ public class SideMenuController implements Initializable {
     private onItemClick itemClick;
 
     private String userName;
+    private Image coverImage;
+    private Image profileImage;
 
-    public SideMenuController(onItemClick itemClick, String userName){
+    public SideMenuController(onItemClick itemClick, String userName, Image coverImage, Image profileImage) {
         this.itemClick = itemClick;
         this.userName = userName;
+        this.coverImage = coverImage;
+        this.profileImage = profileImage;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblUserName.setText(userName);
+        lblUserName.setEffect(new DropShadow(+25d, 0d, +2d, Color.BLACK));
+
+        imageViewCover.setImage(coverImage);
+        imageViewCover.setPreserveRatio(false);
+        
+        circleUser.setFill(new ImagePattern(profileImage));
+        circleUser.setEffect(new DropShadow(+25d, 0d, +2d, Color.BLACK));
+
 
         btnService1.setOnAction(new EventHandler<ActionEvent>() {
             @Override

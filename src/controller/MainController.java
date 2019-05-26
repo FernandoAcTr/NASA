@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.User;
 import utils.MyUtils;
 
 import java.io.IOException;
@@ -34,11 +35,14 @@ public class MainController implements Initializable, SideMenuController.onItemC
     @FXML
     private AnchorPane paneContent;
 
-    private String userName;
+    private User user;
+
+    public MainController(User user) {
+        this.user = user;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initData();
         initComponents();
     }
 
@@ -50,14 +54,11 @@ public class MainController implements Initializable, SideMenuController.onItemC
     /*----------------------------------------------------------------------------------------------
                                         Init Methods
      ----------------------------------------------------------------------------------------------*/
-    private void initData() {
-        userName = "Fernando Acosta";
-    }
-
     private void initSideMenu() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/side_bar.fxml"));
         try {
-            SideMenuController controller = new SideMenuController(this, userName);
+            SideMenuController controller = new SideMenuController(this, user.getUsername(),
+                    user.getImageCover().getImage(), user.getImageProfile().getImage());
             loader.setController(controller);
             Parent sideMenu = loader.load();
             drawer.setSidePane(sideMenu);

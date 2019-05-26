@@ -1,4 +1,4 @@
-package model;
+package controller.apod;
 
 public class APODBean {
     private String copyright;

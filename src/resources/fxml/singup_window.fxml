@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane stylesheets="@../css/maincss.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SingUpController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="600.0" spacing="20.0" styleClass="pane-default" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" VBox.vgrow="NEVER">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <children>
+                  <Label text="Sing Up">
+                     <styleClass>
+                        <String fx:value="lbl" />
+                        <String fx:value="lbl-h1" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox spacing="20.0">
+               <children>
+                  <JFXTextField fx:id="txtUser" focusColor="BLACK" labelFloat="true" promptText="User" />
+                  <JFXPasswordField fx:id="txtPassword" focusColor="BLACK" labelFloat="true" promptText="Password" />
+                  <JFXPasswordField fx:id="txtConfPassword" focusColor="BLACK" labelFloat="true" promptText="Confirm Password" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+      <Button fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="pane-trasparent" text="Button" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CLOSE" size="30" />
+         </graphic>
+      </Button>
+      <ImageView fx:id="imageViewCover" fitHeight="180.0" fitWidth="350.0" pickOnBounds="true" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="240.0">
+         <image>
+            <Image url="@../images/cover_default.jpg" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circleImageProfile" fill="#d1d2d3" radius="50.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="350.0" />
+      <JFXButton fx:id="btnProfilePhoto" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="340.0">
+         <graphic>
+            <MaterialIconView fill="WHITE" glyphName="ADD_A_PHOTO" size="30" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnCoverPhoto" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="200.0" layoutY="350.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="220.0">
+         <graphic>
+            <MaterialIconView fill="WHITE" glyphName="ADD_A_PHOTO" size="30" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAccept" text="Accept" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="270.0" />
+   </children>
+</AnchorPane>

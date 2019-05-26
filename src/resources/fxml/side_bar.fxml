@@ -19,7 +19,7 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="imageViewFace" fitHeight="150.0" fitWidth="200.0" layoutX="-24.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="imageViewCover" fitHeight="150.0" fitWidth="200.0" layoutX="-24.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../images/ciudad3.jpeg" />
                </image>
@@ -35,7 +35,7 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <Circle fx:id="imageViewUser" fill="#1f93ff" layoutX="42.0" layoutY="112.0" radius="28.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="82.0" />
+            <Circle fx:id="circleUser" fill="#1f93ff" layoutX="42.0" layoutY="112.0" radius="28.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="82.0" />
             <Label fx:id="lblUserName" layoutX="79.0" layoutY="84.0" text="UserName" textFill="WHITE" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="84.0">
                <effect>
                   <DropShadow />
