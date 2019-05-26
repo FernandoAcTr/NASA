@@ -38,7 +38,7 @@ public class UserDAO {
         User u = null;
 
         try {
-            String query = "SELECT * FROM user where username = '" + username + "' AND password = md5('" + password + "')";
+            String query = "SELECT * FROM user WHERE username = '" + username + "' AND password = md5('" + password + "')";
 
             Statement st = conn.createStatement();
             rs = st.executeQuery(query);
@@ -47,11 +47,13 @@ public class UserDAO {
                 String typeUser = rs.getString(COL_TYPE);
                 Blob imageProfile = rs.getBlob(COL_IMAGE_PROFILE);
                 Blob imageCover = rs.getBlob(COL_IMAGE_COVER);
+                int id = rs.getInt(COL_ID);
 
                 /*byte[] dataImage = imageProfile.getBytes(1, (int)imageProfile.length());
                 Image image = new Image(new ByteArrayInputStream(dataImage));*/
 
                 u = new User();
+                u.setId(id);
                 u.setImageCover(new MyImage(new Image(imageCover.getBinaryStream())));
                 u.setImageProfile(new MyImage(new Image(imageProfile.getBinaryStream())));
                 u.setUsername(username);
@@ -104,7 +106,7 @@ public class UserDAO {
      */
     public boolean existUser(String username){
         boolean exist = false;
-        String query = "SELECT username FROM user where username = '" + username +"'";
+        String query = "SELECT username FROM user WHERE username = '" + username +"'";
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);

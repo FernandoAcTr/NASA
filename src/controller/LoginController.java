@@ -43,6 +43,8 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         initComponents();
         userDAO = new UserDAO(MySQL.getConnection());
+        txtUser.setText("Fernando");
+        txtPassword.setText("fernando");
     }
 
     private void initComponents(){

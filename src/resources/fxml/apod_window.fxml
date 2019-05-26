@@ -8,13 +8,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
@@ -22,7 +22,8 @@
          <children>
             <StackPane>
                <children>
-                  <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" visible="false"/>
+                  <ImageView fx:id="imageAPOD" fitHeight="480.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                  <WebView fx:id="webViewAPOD" maxHeight="480.0" maxWidth="620.0" prefHeight="480.0" prefWidth="620.0" visible="false" />
                   <JFXSpinner fx:id="spnWait" maxWidth="150.0" prefHeight="150.0" />
                </children>
             </StackPane>

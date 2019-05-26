@@ -1,25 +1,35 @@
-package controller.apod;
+package model;
 
 public class APODBean {
-    private String copyright;
+    private int id;
+    private String title;
     private String date;
     private String explanation;
+    private String copyright;
     private String media_type;
-    private String service_version;
-    private String title;
     private String url;
+    private String service_version;
+    private MyImage image;
 
     public APODBean() {
     }
 
-    public APODBean(String copyright, String date, String explanation, String media_type, String service_version, String title, String url) {
-        this.copyright = copyright;
+    public APODBean(String title, String date, String explanation, String copyright, String media_type, String url, String service_version) {
+        this.title = title;
         this.date = date;
         this.explanation = explanation;
+        this.copyright = copyright;
         this.media_type = media_type;
-        this.service_version = service_version;
-        this.title = title;
         this.url = url;
+        this.service_version = service_version;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCopyright() {
@@ -78,4 +88,11 @@ public class APODBean {
         this.url = url;
     }
 
+    public MyImage getImage() {
+        return image;
+    }
+
+    public void setImage(MyImage image) {
+        this.image = image;
+    }
 }

@@ -92,7 +92,7 @@ public class MainController implements Initializable, SideMenuController.onItemC
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/apod_window.fxml"));
 
         try {
-            APODController controller = new APODController();
+            APODController controller = new APODController(user);
             loader.setController(controller);
 
             ScrollPane root = loader.load();

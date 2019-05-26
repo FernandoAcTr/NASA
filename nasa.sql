@@ -74,11 +74,12 @@ DROP TABLE IF EXISTS `apod_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `apod_user` (
+  `search_id` int(11) AUTO_INCREMENT NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_apod` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  PRIMARY KEY (`id_user`,`id_apod`),
+  PRIMARY KEY (`search_id`),
   KEY `fk_apod_user_apod` (`id_apod`),
   CONSTRAINT `fk_apod_user_apod` FOREIGN KEY (`id_apod`) REFERENCES `apod` (`id_apod`),
   CONSTRAINT `fk_apod_user_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
@@ -159,11 +160,12 @@ DROP TABLE IF EXISTS `service2_searches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `service2_searches` (
+  `id_service2_search` int(11) AUTO_INCREMENT NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_media` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  PRIMARY KEY (`id_user`,`id_media`),
+  PRIMARY KEY (`id_service2_search`),
   KEY `fk_media` (`id_media`),
   CONSTRAINT `fk_media` FOREIGN KEY (`id_media`) REFERENCES `media` (`id_media`),
   CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
@@ -187,11 +189,12 @@ DROP TABLE IF EXISTS `techport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `techport` (
+  `id_techport` int(11) AUTO_INCREMENT NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_project` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  PRIMARY KEY (`id_user`,`id_project`),
+  PRIMARY KEY (`id_techport`),
   KEY `fk_techport_project` (`id_project`),
   CONSTRAINT `fk_techport_project` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`),
   CONSTRAINT `fk_techport_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
@@ -219,7 +222,7 @@ CREATE TABLE `user` (
   `username` varchar(30) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `image_profile` longblob,
-  `portada` longblob,
+  `image_cover` longblob,
   `type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
