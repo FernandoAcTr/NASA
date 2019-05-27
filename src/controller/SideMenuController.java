@@ -59,10 +59,12 @@ public class SideMenuController implements Initializable {
         lblUserName.setText(userName);
         lblUserName.setEffect(new DropShadow(+25d, 0d, +2d, Color.BLACK));
 
-        imageViewCover.setImage(coverImage);
+        if (coverImage != null)
+            imageViewCover.setImage(coverImage);
         imageViewCover.setPreserveRatio(false);
-        
-        circleUser.setFill(new ImagePattern(profileImage));
+
+        if (profileImage != null)
+            circleUser.setFill(new ImagePattern(profileImage));
         circleUser.setEffect(new DropShadow(+25d, 0d, +2d, Color.BLACK));
 
 
@@ -102,10 +104,13 @@ public class SideMenuController implements Initializable {
         });
     }
 
-    public interface onItemClick{
+    public interface onItemClick {
         void onServiceOneClick();
+
         void onServiceOneTwo();
+
         void onServiceOneThree();
+
         void onLogOut();
     }
 }
