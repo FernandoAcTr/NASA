@@ -187,7 +187,7 @@ public class APODController implements Initializable {
         if (isImage()) {
             imageAPOD.setVisible(true);
 
-            if (apodBean.getImage().getImage() != null)
+            if (apodBean.getImage() != null)
                 imageAPOD.setImage(apodBean.getImage().getImage());
             else
                 imageAPOD.setImage(new Image(apodBean.getUrl()));
@@ -234,17 +234,17 @@ public class APODController implements Initializable {
 
     private boolean isImage() {
         String url = apodBean.getUrl().toLowerCase();
-        return url.endsWith("jpg") || url.endsWith("jpeg") || url.endsWith("png");
+        return url.contains("jpg") || url.contains("jpeg") || url.contains("png");
     }
 
     private void downloadImage() {
         String extension = null;
         String url = apodBean.getUrl().toLowerCase();
-        if (url.endsWith("jpg"))
+        if (url.contains("jpg"))
             extension = "jpg";
-        else if (url.endsWith("png"))
+        else if (url.contains("png"))
             extension = "png";
-        else if (url.endsWith("jpeg"))
+        else if (url.contains("jpeg"))
             extension = "jpeg";
 
         if (extension != null)
